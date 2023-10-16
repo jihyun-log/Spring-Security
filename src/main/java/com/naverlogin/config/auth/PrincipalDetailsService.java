@@ -3,7 +3,6 @@ package com.naverlogin.config.auth;
 import com.naverlogin.entity.NaverUser;
 import com.naverlogin.repository.NaverUserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.core.parameters.P;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;

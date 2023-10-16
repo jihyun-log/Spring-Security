@@ -19,14 +19,10 @@ public class PrincipalDetails implements UserDetails {
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
 
-        Collection<GrantedAuthority> collect = new ArrayList<>();
-        collect.add(new GrantedAuthority() {
-            @Override
-            public String getAuthority() {
-                return naverUser.getRole().toString();
-            }
-        });
-        return null;
+        Collection<GrantedAuthority> collet = new ArrayList<>();
+        collet.add(()->{ return naverUser.getRole().toString();});
+        return collet;
+
     }
 
     @Override
