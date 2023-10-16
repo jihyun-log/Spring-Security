@@ -1,12 +1,24 @@
 package com.naverlogin.controller;
 
+import com.naverlogin.constant.Role;
+import com.naverlogin.entity.NaverUser;
+import com.naverlogin.repository.NaverUserRepository;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 
 @Controller
 public class IndexController {
+
+    @Autowired
+    private NaverUserRepository naverUserRepository;
+
+    @Autowired
+    private BCryptPasswordEncoder bCryptPasswordEncoder;
 
     @GetMapping({"", "/"})
     public String index(){
@@ -28,19 +40,25 @@ public class IndexController {
         return "manager";
     }
 
-    @GetMapping("/login")
-    public String login(){
-        return "login";
+    @GetMapping("/naverloginForm")
+    public String naverloginForm(){
+        return "login/naverloginForm";
+    }
+
+    @GetMapping("/naverjoinForm")
+    public String naverjoinForm(){
+        return "login/naverjoinForm";
     }
 
     @GetMapping("/join")
-    public String join(){
-        return "join";
-    }
-
-    @GetMapping("/joinProc")
-    public @ResponseBody String joinProc(){
-        return "회원가입 완료됨";
+    public @ResponseBody String join(NaverUser naverUser){
+        System.out.println(naverUser);
+        naverUser.setRole(Role.USER);
+        String rawPassword = naverUser.getPassword();
+        String encPassword = bCryptPasswordEncoder.encode(rawPassword);
+        naverUser.setPassword(encPassword);
+        naverUserRepository.save(naverUser);
+        return "redirect:/naverloginForm";
     }
 
 }
