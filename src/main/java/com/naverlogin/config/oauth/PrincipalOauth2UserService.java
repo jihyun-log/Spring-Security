@@ -61,13 +61,13 @@ public class PrincipalOauth2UserService extends DefaultOAuth2UserService {
         String provider = oAuth2UserInfo.getProvider(); // google
         String providerId = oAuth2UserInfo.getProviderId();
         String username = provider + "_" + providerId; // google_87464687684618
-        String email = oAuth2User.getAttribute("email");
+        String email = oAuth2UserInfo.getEmail();
         Role role = Role.USER;
 
         SocialUser userEntity = socialUserRepository.findByUsername(username);
 
         if(userEntity == null){
-            System.out.println("구글로그인 최초");
+            System.out.println("oauth 로그인 최초");
             userEntity = SocialUser.builder()
                     .username(username)
                     .email(email)
@@ -77,7 +77,7 @@ public class PrincipalOauth2UserService extends DefaultOAuth2UserService {
                     .build();
             socialUserRepository.save(userEntity);
         }else{
-            System.out.println("이미 가입된 구글아이디");
+            System.out.println("이미 가입된 아이디");
         }
 
         //회원 가입을 강제로 진행해볼 예정
