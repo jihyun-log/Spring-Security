@@ -31,12 +31,13 @@ public class IndexController {
     }
 
     @GetMapping("/admin")
-    public String admin(){
+    public @ResponseBody String admin(){
         return "admin";
     }
 
     @GetMapping("/manager")
-    public String manager(){
+    public @ResponseBody String manager(NaverUser naverUser){
+        System.out.println(naverUser);
         return "manager";
     }
 
