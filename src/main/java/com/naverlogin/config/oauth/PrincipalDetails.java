@@ -1,4 +1,4 @@
-package com.naverlogin.config.auth;
+package com.naverlogin.config.oauth;
 
 import com.naverlogin.entity.SocialUser;
 import lombok.Data;

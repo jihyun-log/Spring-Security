@@ -1,6 +1,6 @@
 package com.naverlogin.config;
 
-import com.naverlogin.config.auth.PrincipalOauth2UserService;
+import com.naverlogin.config.oauth.PrincipalOauth2UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

@@ -1,6 +1,6 @@
 package com.naverlogin.controller;
 
-import com.naverlogin.config.auth.PrincipalDetails;
+import com.naverlogin.config.oauth.PrincipalDetails;
 import com.naverlogin.constant.Role;
 import com.naverlogin.entity.SocialUser;
 import com.naverlogin.repository.SocialUserRepository;
