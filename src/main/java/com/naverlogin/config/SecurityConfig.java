@@ -32,7 +32,10 @@ public class SecurityConfig {
                 .formLogin()
                 .loginPage("/loginForm")
                 .loginProcessingUrl("/login")  //login 주소가 호출되면 시큐리티가 낚아채서 대신 로그인을 진행한다.
-                .defaultSuccessUrl("/");
+                .defaultSuccessUrl("/")
+                .and()
+                .oauth2Login()
+                .loginPage("/loginForm"); //구글 로그인이 완료된 후에 처리가 필요하다.
 
         return http.build();
     }

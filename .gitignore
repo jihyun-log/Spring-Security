@@ -31,3 +31,6 @@ build/
 
 ### VS Code ###
 .vscode/
+
+### google client's id and pw ###
+application-oauth.properties
