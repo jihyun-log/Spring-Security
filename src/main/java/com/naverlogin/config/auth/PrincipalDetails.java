@@ -15,12 +15,20 @@ import java.util.Map;
 public class PrincipalDetails implements UserDetails, OAuth2User {
 
     private SocialUser socialUser;
+    private Map<String, Object> attributes;
 
+    //일반 로그인
     public PrincipalDetails(SocialUser socialUser) {
         this.socialUser = socialUser;
     }
 
-    //해당 naverUser의 권한을 리턴하는 곳
+    //Oauth 로그인
+    public PrincipalDetails(SocialUser socialUser, Map<String, Object> attributes){
+        this.socialUser = socialUser;
+        this.attributes = attributes;
+    }
+
+    //해당 socialUser의 권한을 리턴하는 곳
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
 
@@ -66,7 +74,7 @@ public class PrincipalDetails implements UserDetails, OAuth2User {
 
     @Override
     public Map<String, Object> getAttributes() {
-        return null;
+        return attributes;
     }
 
     @Override
