@@ -51,7 +51,7 @@ public class IndexController {
     }
 
     @GetMapping("/join")
-    public @ResponseBody String join(NaverUser naverUser){
+    public String join(NaverUser naverUser){
         System.out.println(naverUser);
         naverUser.setRole(Role.USER);
         String rawPassword = naverUser.getPassword();
