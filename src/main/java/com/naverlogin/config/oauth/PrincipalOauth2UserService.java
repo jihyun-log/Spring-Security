@@ -1,6 +1,6 @@
 package com.naverlogin.config.oauth;
 
-import com.naverlogin.config.oauth.PrincipalDetails;
+import com.naverlogin.config.auth.PrincipalDetails;
 import com.naverlogin.config.oauth.provider.FacebookUserInfo;
 import com.naverlogin.config.oauth.provider.GoogleUserInfo;
 import com.naverlogin.config.oauth.provider.NaverUserInfo;
@@ -42,25 +42,24 @@ public class PrincipalOauth2UserService extends DefaultOAuth2UserService {
 
             oAuth2UserInfo = new GoogleUserInfo(oAuth2User.getAttributes());
 
-        }else if (userRequest.getClientRegistration().getRegistrationId().equals("naver")){
-            System.out.println("네이버 로그인 요청");
-
-            oAuth2UserInfo = new NaverUserInfo((Map)oAuth2User.getAttributes().get("response"));
-
         }else if (userRequest.getClientRegistration().getRegistrationId().equals("facebook")){
             System.out.println("페이스북 로그인 요청");
 
             oAuth2UserInfo = new FacebookUserInfo(oAuth2User.getAttributes());
 
-        }
-        else{
+        }else if (userRequest.getClientRegistration().getRegistrationId().equals("naver")) {
+            System.out.println("네이버 로그인 요청");
+
+            oAuth2UserInfo = new NaverUserInfo((Map) oAuth2User.getAttributes().get("response"));
+
+        }else{
             System.out.println("구글과 페이스북, 네이버만 지원");
         }
 
 
-        String provider = oAuth2UserInfo.getProvider(); // google
+        String provider = oAuth2UserInfo.getProvider();
         String providerId = oAuth2UserInfo.getProviderId();
-        String username = provider + "_" + providerId; // google_87464687684618
+        String username = provider + "_" + providerId;
         String email = oAuth2UserInfo.getEmail();
         Role role = Role.USER;
 

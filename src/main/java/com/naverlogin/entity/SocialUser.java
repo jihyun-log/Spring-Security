@@ -7,11 +7,13 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.hibernate.annotations.CreationTimestamp;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.*;
 import java.sql.Timestamp;
 
 @Entity
-@Table(name="socialUsers")
 @Data
 @NoArgsConstructor
 public class SocialUser {
@@ -23,9 +25,7 @@ public class SocialUser {
     private String username;
 
     private String password;
-
     private String email;
-
     @Enumerated(EnumType.STRING)
     private Role role;
 

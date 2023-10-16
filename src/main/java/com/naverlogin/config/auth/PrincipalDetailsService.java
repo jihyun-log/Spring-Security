@@ -1,4 +1,4 @@
-package com.naverlogin.config.oauth;
+package com.naverlogin.config.auth;
 
 import com.naverlogin.entity.SocialUser;
 import com.naverlogin.repository.SocialUserRepository;

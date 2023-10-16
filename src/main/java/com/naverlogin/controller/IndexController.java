@@ -1,10 +1,12 @@
 package com.naverlogin.controller;
 
-import com.naverlogin.config.oauth.PrincipalDetails;
+import com.naverlogin.config.auth.PrincipalDetails;
 import com.naverlogin.constant.Role;
 import com.naverlogin.entity.SocialUser;
 import com.naverlogin.repository.SocialUserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.annotation.Secured;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
@@ -69,12 +71,6 @@ public class IndexController {
         return "admin";
     }
 
-    @GetMapping("/manager")
-    public @ResponseBody String manager(SocialUser socialUser){
-        System.out.println(socialUser);
-        return "manager";
-    }
-
     @GetMapping("/loginForm")
     public String loginForm(){
         return "login/loginForm";
@@ -96,4 +92,15 @@ public class IndexController {
         return "redirect:/loginForm";
     }
 
+    @Secured("ROLE_ADMIN")
+    @GetMapping("/info")
+    public @ResponseBody String info(){
+        return "개인정보";
+    }
+
+    @PreAuthorize("hasRole('ADMIN')")
+    @GetMapping("/data")
+    public @ResponseBody String data(){
+        return "데이터정보";
+    }
 }
