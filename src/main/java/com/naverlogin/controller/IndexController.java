@@ -41,14 +41,14 @@ public class IndexController {
         return "manager";
     }
 
-    @GetMapping("/naverloginForm")
-    public String naverloginForm(){
-        return "login/naverloginForm";
+    @GetMapping("/loginForm")
+    public String loginForm(){
+        return "login/loginForm";
     }
 
-    @GetMapping("/naverjoinForm")
-    public String naverjoinForm(){
-        return "login/naverjoinForm";
+    @GetMapping("/joinForm")
+    public String joinForm(){
+        return "login/joinForm";
     }
 
     @GetMapping("/join")
@@ -59,7 +59,7 @@ public class IndexController {
         String encPassword = bCryptPasswordEncoder.encode(rawPassword);
         naverUser.setPassword(encPassword);
         naverUserRepository.save(naverUser);
-        return "redirect:/naverloginForm";
+        return "redirect:/loginForm";
     }
 
 }

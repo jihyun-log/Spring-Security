@@ -28,8 +28,8 @@ public class SecurityConfig {
                 .anyRequest().permitAll()
                 .and()
                 .formLogin()
-                .loginPage("/naverloginForm")
-                .loginProcessingUrl("/naverlogin")  //login 주소가 호출되면 시큐리티가 낚아채서 대신 로그인을 진행한다.
+                .loginPage("/loginForm")
+                .loginProcessingUrl("/login")  //login 주소가 호출되면 시큐리티가 낚아채서 대신 로그인을 진행한다.
                 .defaultSuccessUrl("/");
 
         return http.build();
