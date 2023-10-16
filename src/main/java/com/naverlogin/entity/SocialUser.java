@@ -10,7 +10,7 @@ import java.sql.Timestamp;
 @Entity
 @Table(name="naverUsers")
 @Data
-public class NaverUser {
+public class SocialUser {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

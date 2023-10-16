@@ -1,6 +1,6 @@
 package com.naverlogin.config.auth;
 
-import com.naverlogin.entity.NaverUser;
+import com.naverlogin.entity.SocialUser;
 import com.naverlogin.repository.NaverUserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -21,7 +21,7 @@ public class PrincipalDetailsService implements UserDetailsService {
 
         System.out.println("name" + name);
 
-        NaverUser userEntity = naverUserRepository.findByName(name);
+        SocialUser userEntity = naverUserRepository.findByName(name);
 
         if(userEntity != null){
             return new PrincipalDetails(userEntity);

@@ -1,13 +1,12 @@
 package com.naverlogin.controller;
 
 import com.naverlogin.constant.Role;
-import com.naverlogin.entity.NaverUser;
+import com.naverlogin.entity.SocialUser;
 import com.naverlogin.repository.NaverUserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 
@@ -36,8 +35,8 @@ public class IndexController {
     }
 
     @GetMapping("/manager")
-    public @ResponseBody String manager(NaverUser naverUser){
-        System.out.println(naverUser);
+    public @ResponseBody String manager(SocialUser socialUser){
+        System.out.println(socialUser);
         return "manager";
     }
 
@@ -52,13 +51,13 @@ public class IndexController {
     }
 
     @GetMapping("/join")
-    public String join(NaverUser naverUser){
-        System.out.println(naverUser);
-        naverUser.setRole(Role.USER);
-        String rawPassword = naverUser.getPassword();
+    public String join(SocialUser socialUser){
+        System.out.println(socialUser);
+        socialUser.setRole(Role.USER);
+        String rawPassword = socialUser.getPassword();
         String encPassword = bCryptPasswordEncoder.encode(rawPassword);
-        naverUser.setPassword(encPassword);
-        naverUserRepository.save(naverUser);
+        socialUser.setPassword(encPassword);
+        naverUserRepository.save(socialUser);
         return "redirect:/loginForm";
     }
 

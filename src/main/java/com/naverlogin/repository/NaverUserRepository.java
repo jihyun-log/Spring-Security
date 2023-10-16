@@ -1,10 +1,10 @@
 package com.naverlogin.repository;
 
-import com.naverlogin.entity.NaverUser;
+import com.naverlogin.entity.SocialUser;
 import org.springframework.data.jpa.repository.JpaRepository;
 
-public interface NaverUserRepository extends JpaRepository<NaverUser, Long> {
+public interface NaverUserRepository extends JpaRepository<SocialUser, Long> {
 
-    public NaverUser findByName(String name);
+    public SocialUser findByName(String name);
 
 }
