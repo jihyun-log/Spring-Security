@@ -13,10 +13,12 @@ public class PrincipalOauth2UserService extends DefaultOAuth2UserService {
     @Override
     public OAuth2User loadUser(OAuth2UserRequest userRequest) throws OAuth2AuthenticationException {
 
-        System.out.println("userRequest :" + userRequest.getClientRegistration());
+        System.out.println("userRequest :" + userRequest.getClientRegistration());          //registrationId로 어떤 Oauth로 로그인 했는지 확인 가능
         System.out.println("userRequest :" + userRequest.getAccessToken().getTokenValue());
         System.out.println("userRequest :" + super.loadUser(userRequest).getAttributes());
 
+
+        OAuth2User oAuth2User = super.loadUser(userRequest);
         //회원 가입을 강제로 진행해볼 예정
         return super.loadUser(userRequest);
     }

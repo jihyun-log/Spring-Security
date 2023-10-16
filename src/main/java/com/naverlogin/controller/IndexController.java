@@ -1,10 +1,14 @@
 package com.naverlogin.controller;
 
+import com.naverlogin.config.auth.PrincipalDetails;
 import com.naverlogin.constant.Role;
 import com.naverlogin.entity.SocialUser;
-import com.naverlogin.repository.NaverUserRepository;
+import com.naverlogin.repository.SocialUserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.oauth2.core.user.OAuth2User;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -14,10 +18,38 @@ import org.springframework.web.bind.annotation.ResponseBody;
 public class IndexController {
 
     @Autowired
-    private NaverUserRepository naverUserRepository;
+    private SocialUserRepository socialUserRepository;
 
     @Autowired
     private BCryptPasswordEncoder bCryptPasswordEncoder;
+
+    //@@AuthenticationPrincipal을 통해서 세션정보에 접근할 수 있음
+    @GetMapping("/test/login")
+    public @ResponseBody String testLogin(Authentication authentication,
+                                          @AuthenticationPrincipal PrincipalDetails userDetails){
+        System.out.println("/test/login===================");
+
+        PrincipalDetails principalDetails = (PrincipalDetails) authentication.getPrincipal();
+
+
+        System.out.println("authentication : " + principalDetails.getSocialUser());
+        System.out.println("userDetails : " + userDetails.getSocialUser());
+        return "세션 정보 확인하기";
+    }
+
+    @GetMapping("/test/oauth/login")
+    public @ResponseBody String testOauthLogin(Authentication authentication,
+                                               @AuthenticationPrincipal OAuth2User oauth){
+        System.out.println("/test/oauth/login===================");
+
+        OAuth2User oAuth2User = (OAuth2User) authentication.getPrincipal();
+
+        System.out.println("authentication : " + oAuth2User.getAttributes());
+        System.out.println("oauth2User : " + oauth.getAttributes());
+
+        return "Oauth 세션 정보 확인하기";
+    }
+
 
     @GetMapping({"", "/"})
     public String index(){
@@ -57,7 +89,7 @@ public class IndexController {
         String rawPassword = socialUser.getPassword();
         String encPassword = bCryptPasswordEncoder.encode(rawPassword);
         socialUser.setPassword(encPassword);
-        naverUserRepository.save(socialUser);
+        socialUserRepository.save(socialUser);
         return "redirect:/loginForm";
     }
 

@@ -1,13 +1,18 @@
 package com.naverlogin.config.auth;
 
 import com.naverlogin.entity.SocialUser;
+import lombok.Data;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.oauth2.core.user.OAuth2User;
+
 
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.Map;
 
-public class PrincipalDetails implements UserDetails {
+@Data
+public class PrincipalDetails implements UserDetails, OAuth2User {
 
     private SocialUser socialUser;
 
@@ -32,7 +37,7 @@ public class PrincipalDetails implements UserDetails {
 
     @Override
     public String getUsername() {
-        return socialUser.getName();
+        return socialUser.getUsername();
     }
 
     @Override
@@ -57,6 +62,16 @@ public class PrincipalDetails implements UserDetails {
         //현재시간 - 로그인시간 => 1년초과하면 return false;
 
         return true;
+    }
+
+    @Override
+    public Map<String, Object> getAttributes() {
+        return null;
+    }
+
+    @Override
+    public String getName() {
+        return null;
     }
 
 }
