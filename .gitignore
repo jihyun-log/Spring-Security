@@ -33,4 +33,5 @@ build/
 .vscode/
 
 ### google client's id and pw ###
-application-oauth.properties
+#git에 올리고 싶기 때문에 주석처리 했음! 나중에 public으로 올릴 때는 주석을 풀어주어야 한다.
+#application-oauth.properties
