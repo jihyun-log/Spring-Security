@@ -7,4 +7,6 @@ public interface SocialUserRepository extends JpaRepository<SocialUser, Long> {
 
     public SocialUser findByUsername(String username);
 
+    public SocialUser findByEmail(String Email);
+
 }
