@@ -1,4 +1,4 @@
-package com.naverlogin.entity;
+package com.sociallogin.entity;
 
 import lombok.Getter;
 import org.springframework.data.annotation.CreatedBy;

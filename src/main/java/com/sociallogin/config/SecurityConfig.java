@@ -1,6 +1,6 @@
-package com.naverlogin.config;
+package com.sociallogin.config;
 
-import com.naverlogin.config.oauth.PrincipalOauth2UserService;
+import com.sociallogin.config.oauth.PrincipalOauth2UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -28,7 +28,6 @@ public class SecurityConfig {
         http.csrf().disable();
         http.authorizeRequests()
                 .antMatchers("/user/**").authenticated()
-                .antMatchers("/manager/**").access("hasRole('MANAGER')")
                 .antMatchers("/admin/**").access("hasRole('ADMIN')")
                 .anyRequest().permitAll()
                 .and()

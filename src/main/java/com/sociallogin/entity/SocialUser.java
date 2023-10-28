@@ -1,7 +1,7 @@
-package com.naverlogin.entity;
+package com.sociallogin.entity;
 
 
-import com.naverlogin.constant.Role;
+import com.sociallogin.constant.Role;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;

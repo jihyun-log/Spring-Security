@@ -1,13 +1,13 @@
-package com.naverlogin;
+package com.sociallogin;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class NaverloginApplication {
+public class SocialloginApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(NaverloginApplication.class, args);
+		SpringApplication.run(SocialloginApplication.class, args);
 	}
 
 }

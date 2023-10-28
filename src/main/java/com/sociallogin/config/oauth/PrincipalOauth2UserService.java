@@ -1,13 +1,13 @@
-package com.naverlogin.config.oauth;
+package com.sociallogin.config.oauth;
 
-import com.naverlogin.config.auth.PrincipalDetails;
-import com.naverlogin.config.oauth.provider.FacebookUserInfo;
-import com.naverlogin.config.oauth.provider.GoogleUserInfo;
-import com.naverlogin.config.oauth.provider.NaverUserInfo;
-import com.naverlogin.config.oauth.provider.OAuth2UserInfo;
-import com.naverlogin.constant.Role;
-import com.naverlogin.entity.SocialUser;
-import com.naverlogin.repository.SocialUserRepository;
+import com.sociallogin.config.auth.PrincipalDetails;
+import com.sociallogin.config.oauth.provider.FacebookUserInfo;
+import com.sociallogin.config.oauth.provider.GoogleUserInfo;
+import com.sociallogin.config.oauth.provider.NaverUserInfo;
+import com.sociallogin.config.oauth.provider.OAuth2UserInfo;
+import com.sociallogin.constant.Role;
+import com.sociallogin.entity.SocialUser;
+import com.sociallogin.repository.SocialUserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.oauth2.client.userinfo.DefaultOAuth2UserService;
 import org.springframework.security.oauth2.client.userinfo.OAuth2UserRequest;
@@ -23,7 +23,7 @@ public class PrincipalOauth2UserService extends DefaultOAuth2UserService {
     @Autowired
     private SocialUserRepository socialUserRepository;
 
-    //구글로부터 받는 userRequest 데이터에 대한 후처리되는 함수
+
     @Override
     public OAuth2User loadUser(OAuth2UserRequest userRequest) throws OAuth2AuthenticationException {
 
@@ -62,7 +62,8 @@ public class PrincipalOauth2UserService extends DefaultOAuth2UserService {
         String email = oAuth2UserInfo.getEmail();
         Role role = Role.USER;
 
-        SocialUser userEntity = socialUserRepository.findByUsername(username);
+        SocialUser userEntity = socialUserRepository.findByEmail(email);
+        //원래         SocialUser userEntity = socialUserRepository.findByUsername(username);
 
         if(userEntity == null){
             System.out.println("oauth 로그인 최초");

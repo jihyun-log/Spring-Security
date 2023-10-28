@@ -1,4 +1,4 @@
-package com.naverlogin.config.oauth.provider;
+package com.sociallogin.config.oauth.provider;
 
 import java.util.Map;
 

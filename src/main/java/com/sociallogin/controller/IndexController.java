@@ -1,9 +1,9 @@
-package com.naverlogin.controller;
+package com.sociallogin.controller;
 
-import com.naverlogin.config.auth.PrincipalDetails;
-import com.naverlogin.constant.Role;
-import com.naverlogin.entity.SocialUser;
-import com.naverlogin.repository.SocialUserRepository;
+import com.sociallogin.config.auth.PrincipalDetails;
+import com.sociallogin.constant.Role;
+import com.sociallogin.entity.SocialUser;
+import com.sociallogin.repository.SocialUserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.annotation.Secured;
 import org.springframework.security.access.prepost.PreAuthorize;
@@ -58,6 +58,8 @@ public class IndexController {
         return "index";
     }
 
+    //Oauth 로그인을 해도 principalDetails
+    //일반 로그인을 해도 principalDetails
     @GetMapping("/user")
     public @ResponseBody String user(@AuthenticationPrincipal PrincipalDetails principalDetails){
 

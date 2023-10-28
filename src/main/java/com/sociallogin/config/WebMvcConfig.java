@@ -1,4 +1,4 @@
-package com.naverlogin.config;
+package com.sociallogin.config;
 
 import org.springframework.boot.web.servlet.view.MustacheViewResolver;
 import org.springframework.context.annotation.Configuration;

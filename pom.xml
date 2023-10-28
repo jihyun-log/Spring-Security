@@ -8,11 +8,11 @@
 		<version>2.7.16</version>
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
-	<groupId>com.naverlogin</groupId>
-	<artifactId>naverlogin</artifactId>
+	<groupId>com.sociallogin</groupId>
+	<artifactId>sociallogin</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>naverlogin</name>
-	<description>naverlogin project for Spring Boot</description>
+	<name>sociallogin</name>
+	<description>sociallogin project for Spring Boot</description>
 	<properties>
 		<java.version>11</java.version>
 	</properties>

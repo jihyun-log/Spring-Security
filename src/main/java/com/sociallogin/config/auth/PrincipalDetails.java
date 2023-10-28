@@ -1,6 +1,6 @@
-package com.naverlogin.config.auth;
+package com.sociallogin.config.auth;
 
-import com.naverlogin.entity.SocialUser;
+import com.sociallogin.entity.SocialUser;
 import lombok.Data;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
